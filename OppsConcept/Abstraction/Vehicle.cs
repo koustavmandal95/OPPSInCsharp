@@ -23,14 +23,5 @@ namespace OppsConcept.Abstraction
             Console.WriteLine("Car is starting...");
         }
     }
-
-    class Driver 
-    {
-        static void Main() {
-            Vehicle myCar = new Car("Toyota");
-            myCar.DisplayBrand();
-            myCar.Start();
-        }
-    }
 }
 
