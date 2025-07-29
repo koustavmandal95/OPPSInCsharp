@@ -1,0 +1,57 @@
+@startuml Aggregation Class Diagram
+
+
+
+namespace OppsConcept.Aggregation {
+    interface ITeachable {
+        + Teach() : void
+    }
+
+    class Professor {
+        + Name : string {get; private set}
+        + Subject : string {get; private set}
+        + Professor(name : string, subject : string)
+        + Teach() : void
+    }
+
+    class University {
+        + Name : string {get; private set}
+        + Professors : List<ITeachable> {get; private set}
+        + University(name : string)
+        + AddProfessor(professor : ITeachable) : void
+        + ShowProfessors() : void
+    }
+
+    ITeachable <|.. Professor : implements
+    University o-- ITeachable : aggregates
+}
+
+note right of ITeachable
+    Interface defining the contract
+    for teachable entities.
+    Only defines Teach() method.
+end note
+
+note right of Professor
+    Concrete implementation of ITeachable.
+    Has Name and Subject properties.
+    Can exist independently of University.
+end note
+
+note right of University
+    University aggregates ITeachable objects.
+    Uses interface-based programming.
+    Professors can exist without University
+    (loose coupling - Aggregation pattern).
+end note
+
+note bottom of University
+    Aggregation with Interface:
+    - "Has-a" relationship
+    - Works with ITeachable interface
+    - Supports polymorphism
+    - Loose coupling
+    - Extensible design
+end note
+
+@enduml

@@ -10,7 +10,7 @@ namespace OppsConcept.Aggregation
         static void Main(string[] args)
         {
             Professor prof1 = new Professor("Dr. Smith", "Computer Science");
-            Professor prof2 = new Professor("Dr. Johnson", "Mathematics");
+            ITeachable prof2 = new Professor("Dr. Johnson", "Mathematics");
             
             University university = new University("Harvard University");
             university.AddProfessor(prof1);
@@ -18,9 +18,6 @@ namespace OppsConcept.Aggregation
             
             university.ShowProfessors();
             
-            // Professors can exist independently
-            prof1.Teach();
-            prof2.Teach();
         }
     }
 }

@@ -3,7 +3,12 @@ using System.Collections.Generic;
 
 namespace OppsConcept.Aggregation
 {
-    class Professor
+    interface ITeachable
+    {
+        void Teach();
+    }
+
+     class Professor : ITeachable
     {
         public string Name { get; private set; }
         public string Subject { get; private set; }
@@ -23,18 +28,17 @@ namespace OppsConcept.Aggregation
     class University
     {
         public string Name { get; private set; }
-        public List<Professor> Professors { get; private set; }
+        public List<ITeachable> Professors { get; private set; }
 
         public University(string name)
         {
             Name = name;
-            Professors = new List<Professor>();
+            Professors = new List<ITeachable>();
         }
 
-        public void AddProfessor(Professor professor)
+        public void AddProfessor(ITeachable professor)
         {
             Professors.Add(professor);
-            Console.WriteLine($"{professor.Name} has been added to {Name}");
         }
 
         public void ShowProfessors()
@@ -42,7 +46,7 @@ namespace OppsConcept.Aggregation
             Console.WriteLine($"Professors at {Name}:");
             foreach (var professor in Professors)
             {
-                Console.WriteLine($"- {professor.Name} ({professor.Subject})");
+                professor.Teach();
             }
         }
     }

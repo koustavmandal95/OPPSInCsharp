@@ -1,0 +1,47 @@
+@startuml Vehicle Class Diagram
+
+
+namespace OppsConcept.Abstraction {
+    abstract class Vehicle {
+        # Brand : string
+        # Vehicle(brand : string)
+        + {abstract} Start() : void
+        + DisplayBrand() : void
+    }
+
+    class Car {
+        + Car(brand : string)
+        + Start() : void
+    }
+
+    Vehicle <|-- Car
+}
+
+note right of Vehicle
+    Abstract base class for all vehicles.
+    Contains protected Brand field and
+    abstract Start method that must be
+    implemented by derived classes.
+    
+    DisplayBrand() is a concrete method
+    shared by all vehicle types.
+end note
+
+note right of Car
+    Concrete implementation of Vehicle.
+    Provides specific implementation
+    for the abstract Start() method.
+    
+    Outputs: "Car is starting..."
+end note
+
+note bottom of Vehicle
+    Abstraction Pattern:
+    - Abstract class with abstract methods
+    - Template method pattern
+    - Protected constructor
+    - Common functionality in base class
+    - Specific implementation in derived classes
+end note
+
+@enduml
