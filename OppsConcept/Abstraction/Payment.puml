@@ -1,0 +1,46 @@
+@startuml Payment Class Diagram
+
+!theme plain
+
+namespace OppsConcept.Abstraction {
+    abstract class Payment {
+        # amount : double
+        + Payment(amount : double)
+        + {abstract} ProcessPayment() : void
+    }
+
+    class CreditCardPayment {
+        + CreditCardPayment(amount : double)
+        + ProcessPayment() : void
+    }
+
+    class PayPalPayment {
+        + PayPalPayment(amount : double)
+        + ProcessPayment() : void
+    }
+
+    Payment <|-- CreditCardPayment
+    Payment <|-- PayPalPayment
+}
+
+note right of Payment
+    Abstract base class for all payment types.
+    Contains common amount field and 
+    abstract ProcessPayment method.
+end note
+
+note right of CreditCardPayment
+    Concrete implementation for 
+    credit card payments.
+    Outputs: "Processing credit card 
+    payment of {amount} units."
+end note
+
+note right of PayPalPayment
+    Concrete implementation for 
+    PayPal payments.
+    Outputs: "Processing PayPal 
+    payment of {amount} units."
+end note
+
+@enduml
