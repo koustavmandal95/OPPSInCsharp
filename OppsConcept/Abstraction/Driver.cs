@@ -41,6 +41,10 @@ namespace OppsConcept.Abstraction
             Processing PayPal payment of 200.5 units.
             */
 
+            // Demonstrate downcasting with animals
+            Console.WriteLine("\n" + new string('=', 50));
+            AnimalDowncastingDemo.DemonstrateDowncasting();
+
         }
     }
 }
