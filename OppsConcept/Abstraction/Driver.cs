@@ -4,13 +4,19 @@ namespace OppsConcept.Abstraction
     {
         static void Main() 
         {
-            Car myCar = new Car("Toyota");
+            Vehicle myCar = new Car("Toyota");
             myCar.DisplayBrand();
             myCar.Start();
+            myCar.Stop();
 
             Console.WriteLine(new string('X', 20));
             IAnimal dog = new Dog();
             dog.Makesound();
+            // dog.Fetch();  Not allowed as Fetch is not part of IAnimal interface
+
+            Dog specificDog = new Dog();
+            specificDog.Makesound(); // Allowed as Makesound is part of IAnimal interface
+            specificDog.Fetch(); // Allowed as Fetch is part of Dog class
 
             IAnimal cat = new Cat();
             cat.Makesound();
