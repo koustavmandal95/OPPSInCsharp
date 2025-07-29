@@ -6,7 +6,7 @@ namespace OppsConcept.Abstraction
 {
     protected string Brand;
 
-    public Vehicle(string brand)
+    protected Vehicle(string brand)
     {
         Brand = brand;
     }
