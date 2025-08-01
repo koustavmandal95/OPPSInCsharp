@@ -1,0 +1,35 @@
+@startuml
+title Composition Example - Car
+
+class Engine {
+    - int horsePower
+    + Engine(int horsePower)
+    + Start()
+}
+
+class Wheel {
+    - int size
+    + Wheel(int size)
+    + Rotate()
+}
+
+class Transmission {
+    - string type
+    + Transmission(string type)
+    + Shift()
+}
+
+class Car {
+    - Engine engine
+    - Wheel wheel
+    - Transmission transmission
+    + Car(Engine engine, Wheel wheel, Transmission transmission)
+    + Drive()
+}
+
+Car *--> Engine : uses
+Car *--> Wheel : uses
+Car *--> Transmission : uses
+
+@enduml
+

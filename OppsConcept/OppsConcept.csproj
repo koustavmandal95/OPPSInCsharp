@@ -5,7 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>OppsConcept.Abstraction.Driver</StartupObject> 
+    <StartupObject>OppsConcept.Composition.CompositionDriver</StartupObject> 
   </PropertyGroup>
 
 </Project>

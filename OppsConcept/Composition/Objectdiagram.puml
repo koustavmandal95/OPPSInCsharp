@@ -1,0 +1,26 @@
+@startuml object diagram
+title Object Diagram - Car and Components
+
+object Engine {
+    horsePower = 150
+}
+
+object Wheel {
+    size = 18
+}
+
+object Transmission {
+    type = "Automatic"
+}
+
+object Car {
+    engine = Engine
+    wheel = Wheel
+    transmission = Transmission
+}
+
+Car *-- Engine
+Car *-- Wheel
+Car *-- Transmission
+
+@enduml
