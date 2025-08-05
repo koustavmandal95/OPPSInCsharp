@@ -11,7 +11,7 @@ namespace WorkforceManager.Accounting
 
         private string name;
 
-        public string customerId
+        public string CustomerId
         {
             get { return customerId; }
             set

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WorkforceManager.HR
 {
@@ -115,16 +116,6 @@ namespace WorkforceManager.HR
                 numberOfHoursWorked = 0;
 
             return wage;
-        }
-
-        public double CalculateWage()
-        {
-            WageCalculations wageCalculations = new WageCalculations();
-
-            double calculateValue = wageCalculations.ComplexWageCalculation(wage, taxRate, 3, 42);
-
-            return calculateValue;
-
         }
 
         public string ConvertToJson()
