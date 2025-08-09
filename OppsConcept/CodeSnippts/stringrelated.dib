@@ -1,0 +1,60 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp"},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
+
+#!csharp
+
+var myString = "String Contents";
+Console.WriteLine(nameof(myString));
+
+#!csharp
+
+string greeting = "Hello!";
+Object mailMessageBody = greeting;
+Console.WriteLine(nameof(greeting));
+Console.WriteLine(nameof(mailMessageBody));
+
+#!csharp
+
+string s = String.Format("Hello {0} Foo {1}", "World", "Bar");
+char [] a = s.ToCharArray();
+for(int i=0; i<a.Length;i++)
+{
+    Console.Write(a[i]);
+}
+Console.WriteLine("\n");
+System.Array.Reverse(a);
+string newstring = new string(a);
+Console.WriteLine(newstring);
+
+#!csharp
+
+string s = "Beta \u0301slpha";
+Console.WriteLine(s);
+
+#!csharp
+
+string s = "Foo";
+string paddedLeft = s.PadLeft(5);
+string paddedRight = s.PadRight(6,'+');
+Console.WriteLine(s);
+Console.WriteLine(paddedLeft);
+Console.WriteLine(paddedRight);
+
+#!csharp
+
+void p(object msg) => Console.WriteLine(msg);
+string nullString = null;
+string emptyString = "";
+string whitespaceString = " ";
+string tabString = "\t";
+string newlineString = "\n";
+string nonEmptyString = "abc123";
+bool result;
+result = String.IsNullOrEmpty(nullString); // true
+p(result);
+result = String.IsNullOrEmpty(emptyString); // true
+result = String.IsNullOrEmpty(whitespaceString); // false
+result = String.IsNullOrEmpty(tabString); // false
+result = String.IsNullOrEmpty(newlineString); // false
+result = String.IsNullOrEmpty(nonEmptyString); // false
