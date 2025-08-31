@@ -6,34 +6,75 @@ using Newtonsoft.Json;
 
 namespace WorkforceManager.HR
 {
-    public class Employee
+    internal class Employee
     {
-        public string firstName;
-        public string lastName;
-        public string email;
+        protected string firstName;
+        protected string lastName;
+        protected string email;
 
-        public int numberOfHoursWorked;
-        public double wage;
-        public double? hourlyRate;
-        public EmployeeType employeeType;
-
+        private int numberOfHoursWorked;
+        private double wage;
+        protected double? hourlyRate;
+        
         public DateTime birthDay;
+
+        public string FirstName
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
+        public string LastName
+        {
+            get { return lastName; }
+            set { lastName = value;  }
+        }
+        public string Email
+        {
+            get { return email; }
+            private set { lastName = value;  }
+        }
+        public int NumberOfHoursWorked
+        {
+            get { return numberOfHoursWorked; }
+            protected set { numberOfHoursWorked = value; }
+        }
+
+        public double Wage
+        {
+            get { return wage; }
+            private set { wage = value; }
+        }
+
+        public double? HourlyRate
+        {
+            get { return hourlyRate; }
+            set
+            {
+                if (hourlyRate < 0)
+                {
+                    hourlyRate = 0;
+                }
+                else
+                {
+                    hourlyRate = value;
+                }
+            }
+        }
 
         const int minimalHoursWorkedUnit = 1;
 
         public static double taxRate = 0.15;
 
-        public Employee(string first, string last, string em, DateTime bd, double? rate, EmployeeType empType)
+        public Employee(string first, string last, string em, DateTime bd, double? rate)
         {
             firstName = first;
             lastName = last;
             email = em;
             birthDay = bd;
             hourlyRate = rate ?? 10;
-            employeeType = empType;
         }
 
-        public Employee(string first, string last, string em, DateTime bd) : this(first, last, em, bd, 0, EmployeeType.StoreManager)
+        public Employee(string first, string last, string em, DateTime bd) : this(first, last, em, bd, 0)
         {
         }
 
@@ -96,18 +137,9 @@ namespace WorkforceManager.HR
         {
             double wageBeforeTax = 0.0;
 
-            if (employeeType == EmployeeType.Manager)
-            {
-                Console.WriteLine($"An extra was added to the wage since {firstName} is a manager!");
-                wageBeforeTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
-            }
-            else
-            {
-                wageBeforeTax = numberOfHoursWorked * hourlyRate.Value;
-            }
-
+            wageBeforeTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
+            wageBeforeTax = numberOfHoursWorked * hourlyRate.Value;
             double taxAmount = wageBeforeTax * taxRate;
-
             wage = wageBeforeTax - taxAmount;
 
             Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");

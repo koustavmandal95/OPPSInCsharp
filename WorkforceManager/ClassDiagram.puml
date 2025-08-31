@@ -1,0 +1,39 @@
+@startuml    Employee WorkforceManager
+namespace WorkforceManager.HR {
+
+class Employee {
+    - string firstName
+    - string lastName
+    - string email
+    - int numberOfHoursWorked
+    - double wage
+    - double? hourlyRate
+    + DateTime birthDay
+    + string FirstName { get; set; }
+    + string LastName { get; set; }
+    + string Email { get; private set; }
+    + int NumberOfHoursWorked { get; protected set; }
+    + double Wage { get; private set; }
+    + double? HourlyRate { get; set; }
+    + static double taxRate
+    + Employee(string first, string last, string em, DateTime bd, double? rate)
+    + Employee(string first, string last, string em, DateTime bd)
+}
+
+class Researcher {
+    + Researcher(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate)
+}
+
+class JuniorResearcher {
+    + JuniorResearcher(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate)
+}
+
+class Manager {
+    + void DisplayManagerDetails()
+}
+
+Employee <|-- Researcher
+Researcher <|-- JuniorResearcher
+}
+
+@enduml

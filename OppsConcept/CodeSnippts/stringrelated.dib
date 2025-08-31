@@ -54,7 +54,23 @@ bool result;
 result = String.IsNullOrEmpty(nullString); // true
 p(result);
 result = String.IsNullOrEmpty(emptyString); // true
+p(result);
 result = String.IsNullOrEmpty(whitespaceString); // false
+p(result);
 result = String.IsNullOrEmpty(tabString); // false
+p(result);
 result = String.IsNullOrEmpty(newlineString); // false
+p(result);
 result = String.IsNullOrEmpty(nonEmptyString); // false
+p(result);
+
+#!csharp
+
+string[] value = {"apple", "orange", "grape", "pear"};
+string separator = ", ";
+string result = String.Join(separator, value,8,9);
+Console.WriteLine(result);
+
+#!markdown
+
+###  IsNullOrWhiteSpace is more safer when you want just actual value
