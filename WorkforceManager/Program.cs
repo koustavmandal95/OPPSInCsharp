@@ -28,6 +28,19 @@ namespace WorkforceManager
             mary.PerformWork();
             mary.ReceiveWage();
             mary.AttendManagementMeeting();
+
+            JuniorResearcher bobJunior = new JuniorResearcher("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+            bobJunior.ResearchNewPieTastes(5);
+            bobJunior.ResearchNewPieTastes(5);
+
+            //DEMO 4
+            Employee jake = new Employee("Jake", "Nicols", "jake@snowball.be", new DateTime(1995, 8, 16), 25, "New street", "123", "123456", "Pie Ville");
+            string streetName = jake.Address.Street;
+            Console.WriteLine($"{jake.FirstName} lives on {jake.Address.Street}");
+
+            //Address newAddress = new Address("Another street", "444", "999999", "Donut town");
+            //jake.Address = newAddress;
+            //Console.WriteLine($"{jake.FirstName} moved to {jake.Address.Street} in {jake.Address.City}");
             
         }       
     }

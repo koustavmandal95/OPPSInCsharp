@@ -18,6 +18,9 @@ namespace WorkforceManager.HR
         
         public DateTime birthDay;
 
+        private Address address;
+
+
         public string FirstName
         {
             get { return firstName; }
@@ -60,11 +63,32 @@ namespace WorkforceManager.HR
                 }
             }
         }
+        public DateTime BirthDay
+        {
+            get => birthDay;
+            set => birthDay = value;
+        }
+
+        public Address Address
+        {
+            get => address;
+            set => address = value;
+        }
 
         const int minimalHoursWorkedUnit = 1;
 
         public static double taxRate = 0.15;
 
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, string street, string houseNumber, string zip, string city)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            BirthDay = birthDay;
+            HourlyRate = hourlyRate ?? 10;
+
+            Address = new Address(street, houseNumber, zip, city);  
+        }
         public Employee(string first, string last, string em, DateTime bd, double? rate)
         {
             firstName = first;

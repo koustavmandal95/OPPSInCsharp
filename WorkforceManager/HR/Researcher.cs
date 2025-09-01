@@ -7,7 +7,8 @@ namespace WorkforceManager.HR
 {
     internal class Researcher : Employee
     {
-                public Researcher(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate) : base(firstName, lastName, email, birthDay, hourlyRate)
+        public Researcher(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate) :
+                base(firstName, lastName, email, birthDay, hourlyRate)
         {
         }
 
