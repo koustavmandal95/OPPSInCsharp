@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace WorkforceManager.HR
 {
-    internal class Employee
+    internal class Employee:IEmployee
     {
         protected string firstName;
         protected string lastName;
@@ -192,6 +192,11 @@ namespace WorkforceManager.HR
         public void DisplayEmployeeDetails()
         {
             Console.WriteLine($"\nFirst name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t\t{email}\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}");
+        }
+
+        public void GiveCompliment()
+        {
+            Console.WriteLine($"{FirstName} {LastName} is doing a great job!");
         }
     }
 }
