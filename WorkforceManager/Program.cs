@@ -9,7 +9,7 @@ namespace WorkforceManager
     {
         static void Main(string[] args)
         {
-
+            /*
             Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
             Employee george = new("George", "Jones", "george@snowball.be", new DateTime(1984, 3, 28), 30);
             george.DisplayEmployeeDetails();
@@ -41,7 +41,27 @@ namespace WorkforceManager
             //Address newAddress = new Address("Another street", "444", "999999", "Donut town");
             //jake.Address = newAddress;
             //Console.WriteLine($"{jake.FirstName} moved to {jake.Address.Street} in {jake.Address.City}");
-            
+            */
+
+            Employee bethany = new StoreManager("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+            Manager mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30);
+            JuniorResearcher bobJunior = new JuniorResearcher("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+            StoreManager kevin = new StoreManager("Kevin", "Marks", "kevin@snowball.be", new DateTime(1953, 12, 12), 10);
+            StoreManager kate = new StoreManager("Kate", "Greggs", "kate@snowball.be", new DateTime(1993, 8, 8), 10);
+
+            List<Employee> employees = new List<Employee>();
+            employees.Add(bethany);
+            employees.Add(mary);
+            employees.Add(bobJunior);
+            employees.Add(kevin);
+            employees.Add(kate);
+
+            foreach (var employee in employees)
+            {
+                employee.DisplayEmployeeDetails();
+                employee.GiveBonus();
+
+}
         }       
     }
 }

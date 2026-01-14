@@ -13,6 +13,14 @@ namespace WorkforceManager.HR
 
         }
 
+        public override void GiveBonus()
+        {
+            if (NumberOfHoursWorked > 5)
+                Console.WriteLine($"Manager {FirstName} {LastName} received a management bonus of 500!");
+            else
+                 Console.WriteLine($"Manager {FirstName} {LastName} received a management bonus of 250!");
+        }
+
         public void AttendManagementMeeting()
         {
             NumberOfHoursWorked += 10;

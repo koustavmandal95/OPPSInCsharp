@@ -155,7 +155,10 @@ namespace WorkforceManager.HR
             Console.WriteLine($"The employee got a bonus of {bonus} and the tax on the bonus is {bonusTax}");
             return bonus;
         }
-
+        public virtual void GiveBonus()
+        {
+            Console.WriteLine($"{FirstName} {LastName} recieved a generic bonus of 100!");
+        }
 
         public double ReceiveWage(bool resetHours = true)
         {
