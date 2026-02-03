@@ -7,6 +7,9 @@ namespace CshaprPracticeProblems.Exercism
 {
     public class RunCodeDecode
     {
-        
+        public RunCodeDecode()
+        {
+            
+        }
     }
 }
