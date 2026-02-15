@@ -1,0 +1,65 @@
+{
+  "version": "0.2.0",
+    "tasks": [
+    {
+      "label": "build",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/CsharpPracticeProblems/Exercism/ExercismApp/ExercismApp.csproj"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ],
+  "configurations": [
+    {
+      "name": ".NET Launch (ExercismApp)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/CsharpPracticeProblems/Exercism/ExercismApp/bin/Debug/net9.0/ExercismApp.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CsharpPracticeProblems/Exercism/ExercismApp",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": ".NET Launch (WorkforceManager)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/WorkforceManager/bin/Debug/net9.0/WorkforceManager.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/WorkforceManager",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": ".NET Launch (ATM)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/ATM/bin/Debug/net8.0/ATM.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/ATM",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": ".NET Launch (OppsConcept)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/OppsConcept/bin/Debug/net8.0/OppsConcept.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/OppsConcept",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
+    }
+  ]
+}

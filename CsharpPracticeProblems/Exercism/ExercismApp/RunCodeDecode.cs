@@ -11,5 +11,9 @@ namespace CshaprPracticeProblems.Exercism
         {
             // Write down...
         }
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Add exercism");
+        }
     }
 }
