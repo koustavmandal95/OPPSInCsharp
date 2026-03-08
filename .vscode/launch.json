@@ -60,6 +60,16 @@
       "cwd": "${workspaceFolder}/OppsConcept",
       "stopAtEntry": false,
       "console": "integratedTerminal"
+    },
+    {
+      "name": ".NET Launch (BethanysPieShop)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/BethanysPieShop/bin/Debug/net8.0/BethanysPieShop.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/BethanysPieShop",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
     }
-  ]
 }
