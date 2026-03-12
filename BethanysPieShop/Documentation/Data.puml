@@ -1,0 +1,11 @@
+@startuml  Data
+class Data {
+        + ID : int
+        + ListOfOrderItems : List<Product>
+        + Fullfiled : bool
+        + FullfiledDate : DateTime
+
+        + Order : void
+        + ShowOrderDetails : void
+    }
+@enduml

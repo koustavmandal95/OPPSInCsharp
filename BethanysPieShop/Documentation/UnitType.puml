@@ -1,0 +1,7 @@
+@startuml UnitEnum
+enum Unit {
+    PerItem 
+    PerBox
+    PerKg
+}
+@enduml
