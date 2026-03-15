@@ -1,17 +1,25 @@
+using System.ComponentModel;
+using System.Data.Common;
 using System.Text;
 
 namespace BethanysPieShop
 {
-    public class Product
+    public partial class Product
     {
 
         private int id;
         private string name = String.Empty;
         private string? description;
-        private readonly int maxItemsInStock = 100;
-
-         
+        private readonly int maxItemsInStock = 100;         
         private bool isBelowStockThresold = false;
+
+        public UnitType UnitType {get; set;}
+
+        public int AmountInStock {get; set;}
+
+        public bool IsBelowStockTreshold { get; private set;}
+
+        public Price Price {get;set;}
 
         public int ID
         {
@@ -42,12 +50,30 @@ namespace BethanysPieShop
             }
         }
 
-        public UnitType UnitType {get; set;}
+        
+        public Product(int id): this(id, string.Empty)
+        {
+            
+        }
 
-        public int AmountInStock {get; set;}
+        public Product(int id, string name)
+        {
+            ID = id;
+            Name = name;
+        }
 
-        public bool IsBelowStockTreshold { get; private set;}
+        public Product(int id, string name, string? description, Price price, UnitType unitType)
+            : this(id, name)
+        {
+            Description = description;
+            UnitType = unitType;
+            Price = price;
 
+            if (AmountInStock < 10)
+            {
+            IsBelowStockTreshold = true;
+            }
+        }
 
         public void UseProduct(int items)
         {
@@ -64,18 +90,24 @@ namespace BethanysPieShop
                 Log($"Not enough items on stock for {CreateSimpleProductRepresentation()}. {AmountInStock} available but {items} requested");
             }
         }
-        private void UpdateLowStock()
-        {
-            if (AmountInStock < 10)
-            {
-                isBelowStockThresold = true;
-                Log($"Product {CreateSimpleProductRepresentation()} is below stock thresold. Only {AmountInStock} items left in stock");
-            }
-        }
 
         public void IncreaseStock()
         {
             AmountInStock++;
+        }
+        public void IncreaseStock(int amount)
+        {
+            int newStock = AmountInStock + amount;
+
+            if(newStock <= maxItemsInStock)
+            {
+                AmountInStock += amount;
+            }
+            else
+            {
+                AmountInStock = maxItemsInStock;
+                Log($"{CreateSimpleProductRepresentation} stock Overflow. {newStock - AmountInStock} items ordered that couldn't be stored");
+            }
         }
         private void DecreaseStock(int items, string reason)
         {
@@ -99,24 +131,20 @@ namespace BethanysPieShop
 
         public string DisplayDetailsFull()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"{ID} {name} \n {description}\n{AmountInStock} item(s) in stock");
+            return DisplayDetailsFull("");
+        }
 
+        public string DisplayDetailsFull(string extraDetails)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{ID} {name} \n {description}\n {Price}\n {AmountInStock} item(s) in stock");
+            sb.Append(extraDetails);
+            
             if(isBelowStockThresold)
             {
                 sb.Append("\n !! STOCK NOW !!");
             }
             return sb.ToString();
         }
-
-        private static void Log(string message)
-        {
-            Console.WriteLine(message);
-        }
-        private string CreateSimpleProductRepresentation()
-        {
-            return $"Product {ID} - {name}";
-        }
-
     }
 }

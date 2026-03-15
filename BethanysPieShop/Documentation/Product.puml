@@ -7,16 +7,24 @@ package "BethanysPieShop" {
         - string? description
         - readonly int maxItemsInStock = 100
         - bool isBelowStockThresold
+
+        + Product(int id, string name)
+        + Product(int id, string name, string? description, UnitType unitType, int maxAmountInStock)
+
         + int ID {get; set;}
         + string Name {get; set;}
         + string? Description {get; set;}
         + UnitType UnitType {get; set;}
         + int AmountInStock {get; set;}
         + bool IsBelowStockTreshold {get; private set;}
+
         + void UseProduct(int items)
         + void IncreaseStock()
+        + void IncreaseStock(int amount)
         + string DisplayDetailsShort()
         + string DisplayDetailsFull()
+        + string DisplayDetailsFull(string extraDetails)
+
         - void UpdateLowStock()
         - void DecreaseStock(int items, string reason)
         - static void Log(string message)
