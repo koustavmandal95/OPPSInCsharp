@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BethanysPieShop
@@ -21,6 +22,24 @@ namespace BethanysPieShop
             OrderFulfilmentDate = DateTime.Now.AddSeconds(numberOfSeconds);
 
             OrderItems = new List<OrderItem>();
+        }
+
+        public string ShowOrderDetails()
+        {
+            StringBuilder orderDetails = new StringBuilder();
+
+            orderDetails.AppendLine($"Order ID: {Id}");
+            orderDetails.AppendLine($"Order fulfilment date: {OrderFulfilmentDate.ToShortTimeString()}");
+
+            if(OrderItems != null)
+            {
+                foreach(OrderItem item in OrderItems)
+                {
+                    orderDetails.AppendLine($"{item.ProductId}. {item.ProductName}. {item.AmountOrdered}");
+
+                }
+            }
+            return orderDetails.ToString();
         }
     }
 }

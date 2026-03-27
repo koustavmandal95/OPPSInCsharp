@@ -4,6 +4,6 @@ namespace BethanysPieShop
     {
         PerItem,
         PerBox,
-        Perkg,
+        PerKg,
     }
 }

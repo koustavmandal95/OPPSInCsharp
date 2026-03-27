@@ -71,8 +71,21 @@ namespace BethanysPieShop
 
             if (AmountInStock < 10)
             {
-            IsBelowStockTreshold = true;
+                IsBelowStockTreshold = true;
             }
+        }
+        public Product(int id, string name, string? descreption, Price price, UnitType unitType,
+                        int maxAmountInStock_in)
+        {
+            ID = id;
+            Name = name;
+            Description = description;
+            Price = price;
+            UnitType = unitType;
+            maxItemsInStock = maxAmountInStock_in;
+
+            UpdateLowStock();
+
         }
 
         public void UseProduct(int items)
@@ -108,6 +121,10 @@ namespace BethanysPieShop
                 AmountInStock = maxItemsInStock;
                 Log($"{CreateSimpleProductRepresentation} stock Overflow. {newStock - AmountInStock} items ordered that couldn't be stored");
             }
+            if(AmountInStock > StockThresold)
+            {
+                IsBelowStockTreshold = false;
+            }
         }
         private void DecreaseStock(int items, string reason)
         {
@@ -137,7 +154,7 @@ namespace BethanysPieShop
         public string DisplayDetailsFull(string extraDetails)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{ID} {name} \n {description}\n {Price}\n {AmountInStock} item(s) in stock");
+            sb.Append($"{ID} \n {name} \n {description}\n {Price}\n {AmountInStock} item(s) in stock");
             sb.Append(extraDetails);
             
             if(isBelowStockThresold)

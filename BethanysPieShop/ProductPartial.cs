@@ -7,9 +7,17 @@ namespace BethanysPieShop
 {
     public partial class Product
     {
-        private void UpdateLowStock()
+        public static int StockThresold = 5;
+
+        public static void ChangeStockThresold(int newStockThresold)
         {
-            if (AmountInStock < 10)
+            // we will only allow this to go through if the value is > 0
+            if(newStockThresold > 0)
+                StockThresold = newStockThresold;
+        }
+        internal void UpdateLowStock()
+        {
+            if (AmountInStock < StockThresold)
             {
                 isBelowStockThresold = true;
                 Log($"Product {CreateSimpleProductRepresentation()} is below stock thresold. Only {AmountInStock} items left in stock");
