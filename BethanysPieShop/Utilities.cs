@@ -33,7 +33,7 @@ namespace BethanysPieShop
         internal static void ShowMainMenu()
         {
             Console.ResetColor();
-           // Console.Clear();
+            Console.Clear();
             Console.WriteLine("********************");
             Console.WriteLine("* Select an action *");
             Console.WriteLine("********************");
