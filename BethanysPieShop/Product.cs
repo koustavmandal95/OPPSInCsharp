@@ -74,7 +74,7 @@ namespace BethanysPieShop
                 IsBelowStockTreshold = true;
             }
         }
-        public Product(int id, string name, string? descreption, Price price, UnitType unitType,
+        public Product(int id, string name, string? description, Price price, UnitType unitType,
                         int maxAmountInStock_in)
         {
             ID = id;
@@ -85,7 +85,6 @@ namespace BethanysPieShop
             maxItemsInStock = maxAmountInStock_in;
 
             UpdateLowStock();
-
         }
 
         public void UseProduct(int items)
@@ -93,9 +92,7 @@ namespace BethanysPieShop
             if (items <= AmountInStock)
             {
                 AmountInStock -= items;
-
                 UpdateLowStock();
-
                 Log($"Amount in stock updated. Now {AmountInStock} items in stock");
             }
             else
@@ -108,24 +105,24 @@ namespace BethanysPieShop
         {
             AmountInStock++;
         }
+
         public void IncreaseStock(int amount)
         {
             int newStock = AmountInStock + amount;
+            AmountInStock = Math.Min(newStock, maxItemsInStock);
 
-            if(newStock <= maxItemsInStock)
+            if (newStock > maxItemsInStock)
             {
-                AmountInStock += amount;
-            }
-            else
-            {
-                AmountInStock = maxItemsInStock;
                 Log($"{CreateSimpleProductRepresentation} stock Overflow. {newStock - AmountInStock} items ordered that couldn't be stored");
             }
-            if(AmountInStock > StockThresold)
-            {
-                IsBelowStockTreshold = false;
-            }
+            UpdateStockThresholdStatus();
         }
+
+        private void UpdateStockThresholdStatus()
+        {
+            IsBelowStockTreshold = AmountInStock <= StockThresold;
+        }
+
         private void DecreaseStock(int items, string reason)
         {
             if(items <= AmountInStock)
