@@ -10,14 +10,14 @@ namespace BethanysPieShop
         private int id;
         private string name = String.Empty;
         private string? description;
-        private readonly int maxItemsInStock = 100;         
+        protected readonly int maxItemsInStock = 100;         
         private bool isBelowStockThresold = false;
 
         public UnitType UnitType {get; set;}
 
-        public int AmountInStock {get; set;}
+        public int AmountInStock {get; protected set;}
 
-        public bool IsBelowStockTreshold { get; private set;}
+        public bool IsBelowStockTreshold { get; protected set;}
 
         public Price Price {get;set;}
 
@@ -87,7 +87,7 @@ namespace BethanysPieShop
             UpdateLowStock();
         }
 
-        public void UseProduct(int items)
+        public virtual void UseProduct(int items)
         {
             if (items <= AmountInStock)
             {
@@ -101,12 +101,12 @@ namespace BethanysPieShop
             }
         }
 
-        public void IncreaseStock()
+        public virtual void IncreaseStock()
         {
             AmountInStock++;
         }
 
-        public void IncreaseStock(int amount)
+        public virtual void IncreaseStock(int amount)
         {
             int newStock = AmountInStock + amount;
             AmountInStock = Math.Min(newStock, maxItemsInStock);
@@ -118,12 +118,12 @@ namespace BethanysPieShop
             UpdateStockThresholdStatus();
         }
 
-        private void UpdateStockThresholdStatus()
+        protected void UpdateStockThresholdStatus()
         {
             IsBelowStockTreshold = AmountInStock <= StockThresold;
         }
 
-        private void DecreaseStock(int items, string reason)
+        public virtual void DecreaseStock(int items, string reason)
         {
             if(items <= AmountInStock)
             {
@@ -138,17 +138,17 @@ namespace BethanysPieShop
             Log(reason);
         }
 
-        public string DisplayDetailsShort()
+        public virtual string DisplayDetailsShort()
         {
             return $"{ID}. {name} \n {AmountInStock} items in stock";
         }
 
-        public string DisplayDetailsFull()
+        public virtual string DisplayDetailsFull()
         {
             return DisplayDetailsFull("");
         }
 
-        public string DisplayDetailsFull(string extraDetails)
+        public virtual string DisplayDetailsFull(string extraDetails)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"{ID} \n {name} \n {description}\n {Price}\n {AmountInStock} item(s) in stock");

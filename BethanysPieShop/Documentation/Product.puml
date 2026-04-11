@@ -18,17 +18,57 @@ package "BethanysPieShop" {
         + int AmountInStock {get; set;}
         + bool IsBelowStockTreshold {get; private set;}
 
-        + void UseProduct(int items)
-        + void IncreaseStock()
-        + void IncreaseStock(int amount)
-        + string DisplayDetailsShort()
-        + string DisplayDetailsFull()
-        + string DisplayDetailsFull(string extraDetails)
+        + {abstract} void UseProduct(int items)
+        + {abstract} void IncreaseStock()
+        + {abstract} void IncreaseStock(int amount)
+        + {abstract} string DisplayDetailsShort()
+        + {abstract} string DisplayDetailsFull()
+        + {abstract} string DisplayDetailsFull(string extraDetails)
 
-        - void UpdateLowStock()
-        - void DecreaseStock(int items, string reason)
-        - static void Log(string message)
-        - string CreateSimpleProductRepresentation()
+        # void UpdateLowStock()
+        + {abstract} void DecreaseStock(int items, string reason)
+        # static void Log(string message)
+        # string CreateSimpleProductRepresentation()
+    }
+
+    class BulkProduct {
+        + BulkProduct(int id, string name, string? description, Price price, int maxAmountInStock)
+    }
+
+    class BoxedProduct {
+        - int AmountPerBox
+        + BoxedProduct(int id, string name, string? description, Price price, int maxAmountInStock, int amountPerBox) :
+                           base(id, name, description, price, UnitType.PerBox, maxAmountInStock)
+    }
+
+    class FreshBoxedProduct {
+        + DateTime expiryDateTime
+        + string? StorageInstructors
+
+        + UseFreshBoxedProduct(int items)
+    }
+
+        class FreshProduct {
+        + DateTime ExpiryDateTime
+        + string? StorageInstructions
+
+        + FreshProduct(int id, string name, string? description, Price price, UnitType unitType, int maxAmountInStock)
+        + override string DisplayDetailsFull()
+    }
+
+    class Price {
+        - double itemPrice
+        - Currency currency
+
+        + Price(double itemPrice, Currency currency)
+        + double ItemPrice { get; set; }
+        + Currency Currency { get; set; }
+    }
+
+    enum Currency {
+        Euro
+        Dollar
+        Pound
     }
 
     enum UnitType {
@@ -39,4 +79,11 @@ package "BethanysPieShop" {
 }
 
 Product --> UnitType : uses
+Product <|-- BulkProduct
+Product <|-- BoxedProduct
+BoxedProduct <|-- FreshBoxedProduct
+Product <|-- FreshProduct
+BulkProduct --> Price : uses
+BoxedProduct --> Price : uses
+Price --> Currency : uses
 @enduml

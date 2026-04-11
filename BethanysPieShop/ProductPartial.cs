@@ -23,11 +23,11 @@ namespace BethanysPieShop
                 Log($"Product {CreateSimpleProductRepresentation()} is below stock thresold. Only {AmountInStock} items left in stock");
             }
         }
-        private static void Log(string message)
+        protected static void Log(string message)
         {
             Console.WriteLine(message);
         }
-        private string CreateSimpleProductRepresentation()
+        protected string CreateSimpleProductRepresentation()
         {
             return $"Product {ID} - {name}";
         }

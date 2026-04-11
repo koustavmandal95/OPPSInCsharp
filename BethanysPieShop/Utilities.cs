@@ -18,6 +18,12 @@ namespace BethanysPieShop
             inventory.Add(new Product(3, "Strawberry", "Lorem ipsum", new Price() { ItemPrice = 3, Currency = Currency.Euro }, UnitType.PerBox, 10));
             */
 
+            BoxedProduct bp = new BoxedProduct(6,"Eggs","Lorem Ipsum",new Price() {ItemPrice = 10, Currency = Currency.Euro}, 100, 6);
+            bp.IncreaseStock(100);
+            bp.UseProduct(10);
+            bp.DecreaseStock(10,"Test");
+            bp.ToString();
+
             ProductRepository productRepository = new();  
             inventory = productRepository.LoadProductsFromFile();
 
