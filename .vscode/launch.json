@@ -22,9 +22,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/CsharpPracticeProblems/Exercism/ExercismApp/bin/Debug/net9.0/ExercismApp.dll",
+      "program": "${workspaceFolder}/CsharpPracticeProblems/ExercismApp/bin/Debug/net9.0/ExercismApp.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/CsharpPracticeProblems/Exercism/ExercismApp",
+      "cwd": "${workspaceFolder}/CsharpPracticeProblems/ExercismApp",
       "stopAtEntry": false,
       "console": "integratedTerminal"
     },
