@@ -39,7 +39,7 @@ namespace BethanysPieShop
                 Currency currency = ParseEnumOrDefault(productSplits[5], Currency.Dollar);
                 UnitType unitType = ParseEnumOrDefault(productSplits[6], UnitType.PerItem);
 
-                 Product product = new Product(productId, name, description, 
+                RegularProduct product = new RegularProduct(productId, name, description, 
                                         new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock); 
                 products.Add(product);
 

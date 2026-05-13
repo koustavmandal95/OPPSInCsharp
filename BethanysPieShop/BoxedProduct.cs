@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShop
 {
-    public class BoxedProduct : Product
+    public sealed class BoxedProduct : Product
     {
         private int amountPerBox;
         public int AmountPerBox

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BethanysPieShop
 {
-    public partial class Product
+    public abstract partial class Product
     {
 
         private int id;

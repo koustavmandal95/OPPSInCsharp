@@ -397,3 +397,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+ReactJs/my-electron-app
+CatAppPhoto/CatApp.html

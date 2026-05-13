@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShop
 {
-    public partial class Product
+    public abstract partial class Product
     {
         public static int StockThresold = 5;
 
